@@ -2,6 +2,7 @@ package tutorial;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.LongPoint;
@@ -29,7 +30,7 @@ public class Indexer
     public Indexer(String indexDirectoryPath) throws IOException
     {
         Directory indexDirectory = FSDirectory.open(Paths.get(indexDirectoryPath));
-        Analyzer analyzer = new RussianAnalyzer();
+        Analyzer analyzer = new StandardAnalyzer();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setOpenMode(OpenMode.CREATE);
         writer = new IndexWriter(indexDirectory, config);
