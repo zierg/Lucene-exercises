@@ -14,7 +14,7 @@ public class LuceneTester
     {
         LuceneTester tester = new LuceneTester();
         tester.createIndex();
-        tester.search("хехе");
+        tester.search("яблоки");
     }
 
     private void createIndex() throws IOException{

@@ -30,7 +30,7 @@ public class Indexer
     public Indexer(String indexDirectoryPath) throws IOException
     {
         Directory indexDirectory = FSDirectory.open(Paths.get(indexDirectoryPath));
-        Analyzer analyzer = new StandardAnalyzer();
+        Analyzer analyzer = new RussianAnalyzer();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setOpenMode(OpenMode.CREATE);
         writer = new IndexWriter(indexDirectory, config);

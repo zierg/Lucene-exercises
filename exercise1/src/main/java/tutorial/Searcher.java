@@ -24,14 +24,14 @@ public class Searcher
     {
         IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexDirectoryPath)));
         indexSearcher = new IndexSearcher(reader);
-        Analyzer analyzer = new StandardAnalyzer();
+        Analyzer analyzer = new RussianAnalyzer();
         queryParser = new QueryParser(FIELD, analyzer);
         queryParser.setAllowLeadingWildcard(true);
     }
 
     public TopDocs search(String searchQuery) throws IOException, ParseException
     {
-        Query query = queryParser.parse("*" + searchQuery + "*");
+        Query query = queryParser.parse(/*"*" + */searchQuery/* + "*"*/);
         return indexSearcher.search(query, LuceneConstants.MAX_SEARCH);
     }
 
